@@ -62,7 +62,7 @@ button {
 
 <div class="container" id="intro">
     <h1>💌 Esto está hecho por tu Corazón de Melón,</h1>
-    <h2>Para ti, mi amor, mi Xime 💖</h2>
+    <h2>Para ti, mi amor, mi Xime </h2>
     <button onclick="start()">Comenzar ✨</button>
 </div>
 
@@ -85,41 +85,44 @@ function start() {
     const music = document.getElementById("music");
 
     let noTexts = [
-        "¿Segura? 😢",
-        "Piénsalo bien 🥺",
-        "Es una ordeen",
-        "Has caso crjo",
+        "¿Segura?",
+        "Piénsalo bien",
+        "Es una orden crjo",
         "No me hagas contar",
-        "Última oportunidad",
+        "3",
+        "2",
         "Ya di q si puem"
     ];
 
     let index = 0;
     let yesSize = 18;
 
-    noBtn.addEventListener("mouseover", function() {
-        const x = Math.random() * (window.innerWidth - 100);
-        const y = Math.random() * (window.innerHeight - 50);
+    function moveButton() {
+        const x = Math.random() * (window.innerWidth - 120);
+        const y = Math.random() * (window.innerHeight - 60);
         noBtn.style.left = x + "px";
         noBtn.style.top = y + "px";
 
-        if (index < noTexts.length) {
-            noBtn.textContent = noTexts[index];
-            index++;
-        }
+        // Cambiar texto y reiniciar si llega al final
+        noBtn.textContent = noTexts[index];
+        index = (index + 1) % noTexts.length;
 
+        // Hacer crecer el botón Sí
         yesSize += 6;
         yesBtn.style.fontSize = yesSize + "px";
         yesBtn.style.padding = (yesSize/2) + "px " + (yesSize) + "px";
-    });
+    }
+
+    noBtn.addEventListener("mouseenter", moveButton);
+    noBtn.addEventListener("touchstart", moveButton);
 
     yesBtn.addEventListener("click", function() {
         music.play();
 
         document.body.innerHTML = `
             <div style="text-align:center; margin-top:100px;">
-                <h1> Muy bien, esa es mi mujer carajo </h1>
-                <p>Mañana y el sábado somos corazooón </p>
+                <h1> Muy bien, esa es mi mujer crjo </h1>
+                <p>Mañana y el sábado somos corazón ❤️</p>
                 <p>Besos (abajo también 😝)</p>
             </div>
         `;
